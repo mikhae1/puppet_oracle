@@ -15,4 +15,9 @@ class oracle_dev::install inherits oracle_dev {
     ensure => $package_ensure,
     require => Yumrepo['oracle_dev'],
   }
+
+  package { 'oracle-instantclient12.1-sqlplus':
+    ensure => $package_ensure,
+    require => Yumrepo['oracle_dev'],
+  }
 }
