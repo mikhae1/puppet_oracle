@@ -20,4 +20,13 @@ class oracle_dev::install inherits oracle_dev {
     ensure => $package_ensure,
     require => Yumrepo['oracle_dev'],
   }
+
+  file { "/etc/profile.d/oracle.sh":
+    ensure => file,
+    owner => 0,
+    mode => '0644',
+    source => "puppet:///modules/${module_name}/oracle.sh",
+    replace => 'no',
+    require => Yumrepo['oracle_dev'],
+  }
 }
